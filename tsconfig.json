@@ -1,0 +1,25 @@
+{
+	"compilerOptions": {
+		"baseUrl": "./",
+		"outDir": "./dist/",
+		"noImplicitAny": true,
+		"module": "ES2022",
+		"target": "ES2022",
+		"sourceMap": true,
+		"jsx": "react-jsx",
+		"allowSyntheticDefaultImports": true,
+		"moduleResolution": "node",
+		"typeRoots": ["./node_modules/@types", "../node_modules/@testing-library"],
+		// "types": ["@testing-library/jest-dom"],
+		"paths": {
+		"@src/*": [
+			"src/*"
+		],},
+	},
+	"include": [
+		"src/**/*"
+	],
+	"exclude": [
+		"node_modules"
+	]
+}
