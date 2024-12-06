@@ -32,6 +32,8 @@ async function fetchRandomGreeting() {
 // a fire-and-forget function to report errors
 // for componentDidCatch
 async function reportError() {
+	const functionSignature = "api.ts@reportError()";
+	console.log(functionSignature, "called");
 	await sleep(1000);
 	return { success: true };
 }
