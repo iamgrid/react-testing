@@ -1,6 +1,9 @@
 import FavoriteNumber from "./FavoriteNumber/FavoriteNumber";
 import GreetingLoader from "./GreetingLoader/GreetingLoader";
 import GreetingLoader2 from "./GreetingLoader/GreetingLoader2";
+import HiddenMessageUsingReactTransitionGroup from "./HiddenMessageUsingReactTransitionGroup/HiddenMessageUsingReactTransitionGroup";
+
+import "../styles/common.css";
 
 function App() {
 	return (
@@ -11,6 +14,8 @@ function App() {
 			<GreetingLoader />
 			<hr />
 			<GreetingLoader2 />
+			<hr />
+			<HiddenMessageUsingReactTransitionGroup children="Hello world!" />
 		</div>
 	);
 }
