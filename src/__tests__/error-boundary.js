@@ -19,24 +19,37 @@ afterEach(() => {
 	jest.clearAllMocks();
 });
 
+const ErrorBoundaryProvider = ({ children }) => (
+	<ErrorBoundary FallbackComponent={ErrorFallback} onError={mockReportError}>
+		{children}
+	</ErrorBoundary>
+);
+
 test("catches error in child component", async () => {
 	mockReportError.mockResolvedValueOnce({ success: true });
-	const { rerender } = render(
-		<ErrorBoundary FallbackComponent={ErrorFallback} onError={mockReportError}>
-			<Bomb shouldThrow={false} />
-		</ErrorBoundary>
-	);
 
-	expect(screen.queryByText(/something went wrong/i)).not.toBeInTheDocument();
+	const errorMessageRegex = /^something went wrong.*$/i;
 
-	rerender(
-		<ErrorBoundary FallbackComponent={ErrorFallback} onError={mockReportError}>
-			<Bomb shouldThrow={true} />
-		</ErrorBoundary>
-	);
+	const { rerender } = render(<Bomb shouldThrow={false} />, {
+		wrapper: ErrorBoundaryProvider,
+	});
+
+	expect(
+		screen.queryByTestId("error-boundary-error-message")
+	).not.toBeInTheDocument();
+
+	rerender(<Bomb shouldThrow={true} />);
 
 	// verify the error was caught
-	expect(screen.queryByText(/something went wrong/i)).toBeInTheDocument();
+	expect(
+		screen.queryByTestId("error-boundary-error-message")
+	).toBeInTheDocument();
+	expect(screen.queryByTestId("error-boundary-error-message")).toHaveRole(
+		"alert"
+	);
+	expect(
+		screen.queryByTestId("error-boundary-error-message").textContent
+	).toMatch(errorMessageRegex);
 
 	// verify the error was reported
 	expect(mockReportError).toHaveBeenCalledTimes(1);

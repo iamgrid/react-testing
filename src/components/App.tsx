@@ -12,17 +12,17 @@ import "../styles/common.css";
 function App() {
 	return (
 		<div>
-			<h1>Hello world!</h1>
-			<FavoriteNumber min={1} max={9} />
-			<hr />
-			<GreetingLoader />
-			<hr />
-			<GreetingLoader2 />
-			<hr />
-			<HiddenMessageUsingReactTransitionGroup children="Hello world!" />
-			<hr />
 			<ErrorBoundary FallbackComponent={ErrorFallback} onError={reportError}>
-				<Bomb shouldThrow={true} />
+				<h1>Hello world!</h1>
+				<FavoriteNumber min={1} max={9} />
+				<hr />
+				<GreetingLoader />
+				<hr />
+				<GreetingLoader2 />
+				<hr />
+				<HiddenMessageUsingReactTransitionGroup children="Hello world!" />
+				<hr />
+				<Bomb shouldThrow={false} />
 			</ErrorBoundary>
 		</div>
 	);

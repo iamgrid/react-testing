@@ -8,7 +8,7 @@ function ErrorFallback({
 	resetErrorBoundary: () => void;
 }) {
 	return (
-		<div role="alert">
+		<div role="alert" data-testid="error-boundary-error-message">
 			<p>Something went wrong:</p>
 			<pre style={{ color: "red" }}>{error.message}</pre>
 			{/* <button onClick={resetErrorBoundary}>Try again</button> */}
