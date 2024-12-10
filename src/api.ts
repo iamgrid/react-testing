@@ -7,8 +7,14 @@ const sleep = (time: number) =>
 	});
 
 async function savePost(postData: any) {
+	const functionSignature = "api.ts@savePost()";
 	await sleep(1000);
-	return { data: { post: postData } };
+
+	const wrappedData = { data: { post: postData } };
+
+	console.log(functionSignature, "wrappedData:", wrappedData);
+
+	return wrappedData;
 }
 
 const greetings: string[] = [

@@ -22,6 +22,7 @@ module.exports = {
 	output: {
 		filename: "bundle.js",
 		path: path.resolve(__dirname, "dist"),
+		publicPath: "/",
 	},
 	devtool: "source-map",
 	devServer: {
@@ -31,6 +32,7 @@ module.exports = {
 		compress: true,
 		port: 9000,
 		open: true,
+		historyApiFallback: true,
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
